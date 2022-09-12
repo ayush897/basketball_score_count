@@ -35,3 +35,80 @@ hbtn3.addEventListener("click", function () {
     hscore.textContent = homeScore;
   }
 });
+
+gbtn1.addEventListener("click", function () {
+  if (isalive) {
+    guestScore += 1;
+    gscore.textContent = guestScore;
+  }
+});
+gbtn2.addEventListener("click", function () {
+  if (isalive) {
+    guestScore += 2;
+    gscore.textContent = guestScore;
+  }
+});
+gbtn3.addEventListener("click", function () {
+  if (isalive) {
+    guestScore += 3;
+    gscore.textContent = guestScore;
+  }
+});
+
+endBtn.addEventListener("click", function () {
+  if (homeScore > guestScore) {
+    guestBG.classList.remove("winner");
+    homeBG.classList.add("winner");
+    g_btn.forEach((y) => {
+      y.style.backgroundColor = "#1b244a";
+    });
+    h_btn.forEach((x) => {
+      x.style.backgroundColor = "green";
+    });
+
+    message.textContent = "HOME TEAM WINS";
+    isalive = false;
+  } else if (homeScore === guestScore) {
+    guestBG.classList.add("draw");
+    g_btn.forEach((y) => {
+      y.style.backgroundColor = "blueviolet";
+    });
+    homeBG.classList.add("draw");
+    h_btn.forEach((y) => {
+      y.style.backgroundColor = "blueviolet";
+    });
+    message.textContent = "MATCH DRAW";
+    isalive = false;
+  } else {
+    homeBG.classList.remove("winner");
+    guestBG.classList.add("winner");
+    h_btn.forEach((y) => {
+      y.style.backgroundColor = "#1b244a";
+    });
+    g_btn.forEach((x) => {
+      x.style.backgroundColor = "green";
+    });
+    message.textContent = "GUEST TEAM WINS";
+    isalive = false;
+  }
+});
+newBtn.addEventListener("click", function () {
+  if (!isalive) {
+    message.textContent = "";
+    homeScore = 0;
+    guestScore = 0;
+    homeBG.classList.remove("winner");
+    guestBG.classList.remove("winner");
+    h_btn.forEach((y) => {
+      y.style.backgroundColor = "#1b244a";
+    });
+    g_btn.forEach((x) => {
+      x.style.backgroundColor = "#1b244a";
+    });
+    guestBG.classList.remove("draw");
+    homeBG.classList.remove("draw");
+    hscore.textContent = homeScore;
+    gscore.textContent = guestScore;
+  }
+  isalive = true;
+});
